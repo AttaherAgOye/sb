@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\News;
 
 class PageController extends Controller
 {
     public function home()
     {
-        return view('home');
+        // Récupérer les actualités à la une pour la page d'accueil
+        $featured_news = News::published()->featured()->recent(3)->get();
+        
+        return view('home', compact('featured_news'));
     }
 
     public function identity()

@@ -329,29 +329,50 @@
 </section>
 
 <!-- Partenaires -->
-<section class="premium-section bg-white">
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">Nos Partenaires</h2>
-            <p class="text-xl text-gray-600">Ils nous font confiance</p>
+<section class="premium-section bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-100 rounded-full blur-3xl opacity-20"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-20"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 fade-in-section">
+            <div class="inline-block mb-4 px-6 py-2 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-full border border-indigo-200">
+                <span class="text-sm font-bold text-gray-700 tracking-wide flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+                    </svg>
+                    NOS PARTENAIRES
+                </span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Ils Nous Font <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Confiance</span></h2>
+            <p class="text-xl text-gray-600">Des partenariats stratégiques pour une excellence durable</p>
         </div>
         
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
-            <div class="h-24 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span class="text-gray-400 font-bold">GIZ</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <!-- GIZ -->
+            <div class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 flex items-center justify-center transform hover:-translate-y-2">
+                <img src="{{ asset('images/partners/GIZ.JPG') }}" alt="GIZ" class="max-h-24 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300">
             </div>
-            <div class="h-24 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span class="text-gray-400 font-bold">CNIA</span>
+            
+            <!-- CNIA -->
+            <div class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 flex items-center justify-center transform hover:-translate-y-2">
+                <img src="{{ asset('images/partners/CNIA.JPG') }}" alt="CNIA" class="max-h-24 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300">
             </div>
-            <div class="h-24 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span class="text-gray-400 font-bold">LCV</span>
+            
+            <!-- LCV -->
+            <div class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 flex items-center justify-center transform hover:-translate-y-2">
+                <img src="{{ asset('images/partners/LCV.JPG') }}" alt="LCV" class="max-h-24 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-300">
             </div>
-            <div class="h-24 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span class="text-gray-400 font-bold">AFS</span>
-            </div>
-            <div class="h-24 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span class="text-gray-400 font-bold">Partenaire 5</span>
-            </div>
+        </div>
+        
+        <div class="text-center mt-12 fade-in-section">
+            <a href="{{ route('partners') }}" class="btn-premium bg-gradient-to-r from-indigo-600 to-purple-600 text-white inline-block text-lg px-8 py-4 hover:shadow-xl">
+                <span class="flex items-center gap-2">
+                    Découvrir nos partenariats
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </span>
+            </a>
         </div>
     </div>
 </section>
@@ -359,48 +380,121 @@
 <!-- Actualités récentes -->
 <section class="premium-section bg-gray-50">
     <div class="max-w-7xl mx-auto px-4">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">Dernières Actualités</h2>
-            <p class="text-xl text-gray-600">Restez informés de nos dernières réalisations</p>
+        <div class="text-center mb-16 fade-in-section">
+            <div class="inline-block mb-4 px-6 py-2 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-full border border-indigo-200">
+                <span class="text-sm font-bold text-gray-700 tracking-wide flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                    </svg>
+                    ACTUALITÉS À LA UNE
+                </span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Dernières <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Actualités</span></h2>
+            <p class="text-xl text-gray-600">Restez informés de nos dernières réalisations et innovations</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-                <div class="h-48 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center p-6">
-                    <img src="/images/news/innovation-cleaning.svg" alt="Innovation nettoyage" class="w-full h-full object-contain">
-                </div>
-                <div class="p-6">
-                    <div class="text-sm text-gray-500 mb-2">15 Nov 2024</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Nouveau contrat d'entretien majeur</h3>
-                    <p class="text-gray-600 mb-4">SABOU-CLEAN décroche un contrat de nettoyage premium pour un complexe de bureaux de 5000m².</p>
-                    <a href="{{ route('news') }}" class="text-blue-600 font-semibold hover:underline">Lire plus →</a>
-                </div>
+        @if($featured_news && $featured_news->count() > 0)
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                @foreach($featured_news as $index => $article)
+                    <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" style="animation-delay: {{ $index * 0.2 }}s">
+                        @if($article->image)
+                            <div class="aspect-video overflow-hidden">
+                                <img src="{{ $article->image_url }}" alt="{{ $article->title }}" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                            </div>
+                        @else
+                            <div class="aspect-video bg-gradient-to-br 
+                                @if($article->category == 'services') from-blue-100 to-blue-200
+                                @elseif($article->category == 'partenariats') from-green-100 to-green-200
+                                @elseif($article->category == 'innovations') from-purple-100 to-purple-200
+                                @elseif($article->category == 'evenements') from-orange-100 to-orange-200
+                                @else from-gray-100 to-gray-200
+                                @endif
+                                flex items-center justify-center">
+                                <svg class="w-16 h-16 
+                                    @if($article->category == 'services') text-blue-400
+                                    @elseif($article->category == 'partenariats') text-green-400
+                                    @elseif($article->category == 'innovations') text-purple-400
+                                    @elseif($article->category == 'evenements') text-orange-400
+                                    @else text-gray-400
+                                    @endif
+                                    opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                                </svg>
+                            </div>
+                        @endif
+                        
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                    @if($article->category == 'services') bg-blue-100 text-blue-800
+                                    @elseif($article->category == 'partenariats') bg-green-100 text-green-800
+                                    @elseif($article->category == 'innovations') bg-purple-100 text-purple-800
+                                    @elseif($article->category == 'evenements') bg-orange-100 text-orange-800
+                                    @else bg-gray-100 text-gray-800
+                                    @endif">
+                                    {{ ucfirst($article->category) }}
+                                </span>
+                                <span class="text-sm text-gray-500">{{ $article->formatted_date }}</span>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 hover:text-indigo-600 transition-colors">
+                                <a href="{{ route('news.show', $article->slug) }}">{{ $article->title }}</a>
+                            </h3>
+                            
+                            <p class="text-gray-600 mb-4 line-clamp-3">{{ $article->excerpt }}</p>
+                            
+                            <div class="flex items-center justify-between">
+                                <a href="{{ route('news.show', $article->slug) }}" class="inline-flex items-center
+                                    @if($article->category == 'services') text-blue-600 hover:text-blue-800
+                                    @elseif($article->category == 'partenariats') text-green-600 hover:text-green-800
+                                    @elseif($article->category == 'innovations') text-purple-600 hover:text-purple-800
+                                    @elseif($article->category == 'evenements') text-orange-600 hover:text-orange-800
+                                    @else text-indigo-600 hover:text-indigo-800
+                                    @endif
+                                    font-semibold transition-colors group">
+                                    Lire la suite
+                                    <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                    </svg>
+                                </a>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    {{ $article->views_count }}
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                @endforeach
             </div>
             
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-                <div class="h-48 bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center p-6">
-                    <img src="/images/news/event-success.svg" alt="Succès événementiel" class="w-full h-full object-contain">
-                </div>
-                <div class="p-6">
-                    <div class="text-sm text-gray-500 mb-2">10 Nov 2024</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Gala d'exception organisé</h3>
-                    <p class="text-gray-600 mb-4">SABOU-EVENT réalise la décoration et l'organisation d'un gala diplomatique de 500 personnes.</p>
-                    <a href="{{ route('news') }}" class="text-purple-600 font-semibold hover:underline">Lire plus →</a>
-                </div>
+            <div class="text-center mt-12 fade-in-section">
+                <a href="{{ route('news') }}" class="btn-premium bg-indigo-600 text-white inline-block text-lg px-8 py-4 hover:bg-indigo-700 shadow-lg">
+                    <span class="flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                        </svg>
+                        Voir toutes les actualités
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </span>
+                </a>
             </div>
-            
-            <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-                <div class="h-48 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center p-6">
-                    <img src="/images/news/agro-development.svg" alt="Développement agro" class="w-full h-full object-contain">
-                </div>
-                <div class="p-6">
-                    <div class="text-sm text-gray-500 mb-2">05 Nov 2024</div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-3">Nouveau projet agro-écologique</h3>
-                    <p class="text-gray-600 mb-4">SABOU-AGRO lance un projet de culture biologique sur 10 hectares dans la région.</p>
-                    <a href="{{ route('news') }}" class="text-green-600 font-semibold hover:underline">Lire plus →</a>
-                </div>
+        @else
+            <div class="text-center py-16">
+                <svg class="w-24 h-24 text-gray-300 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                </svg>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Actualités à venir</h3>
+                <p class="text-gray-600 mb-8">Nos dernières actualités seront bientôt disponibles</p>
+                <a href="{{ route('contact') }}" class="btn-premium bg-indigo-600 text-white inline-block">
+                    Nous contacter pour plus d'informations
+                </a>
             </div>
-        </div>
+        @endif
     </div>
 </section>
 

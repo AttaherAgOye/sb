@@ -67,97 +67,113 @@
             <p class="text-xl text-gray-600">Découvrez nos succès récents et nos innovations</p>
         </div>
         
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Article 1 -->
-            <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-                <div class="h-64 bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center p-6">
-                    <img src="/images/news/innovation-cleaning.svg" alt="Innovation nettoyage" class="w-full h-full object-contain">
+        @if($news->count() > 0)
+            <div class="grid md:grid-cols-3 gap-8">
+                @foreach($news as $article)
+                    <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                        @if($article->image)
+                            <div class="aspect-video overflow-hidden">
+                                <img src="{{ $article->image_url }}" alt="{{ $article->title }}" class="w-full h-full object-cover transition-transform duration-300 hover:scale-110">
+                            </div>
+                        @else
+                            <div class="h-64 bg-gradient-to-br 
+                                @if($article->category == 'services') from-blue-100 to-blue-200
+                                @elseif($article->category == 'partenariats') from-green-100 to-green-200
+                                @elseif($article->category == 'innovations') from-purple-100 to-purple-200
+                                @elseif($article->category == 'evenements') from-orange-100 to-orange-200
+                                @else from-indigo-100 to-indigo-200
+                                @endif
+                                flex items-center justify-center">
+                                <svg class="w-16 h-16 
+                                    @if($article->category == 'services') text-blue-400
+                                    @elseif($article->category == 'partenariats') text-green-400
+                                    @elseif($article->category == 'innovations') text-purple-400
+                                    @elseif($article->category == 'evenements') text-orange-400
+                                    @else text-indigo-400
+                                    @endif
+                                    opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                                </svg>
+                            </div>
+                        @endif
+                        
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="
+                                    @if($article->category == 'services') bg-blue-100 text-blue-600
+                                    @elseif($article->category == 'partenariats') bg-green-100 text-green-600
+                                    @elseif($article->category == 'innovations') bg-purple-100 text-purple-600
+                                    @elseif($article->category == 'evenements') bg-orange-100 text-orange-600
+                                    @else bg-indigo-100 text-indigo-600
+                                    @endif
+                                    px-3 py-1 rounded-full font-semibold text-sm">
+                                    {{ ucfirst($article->category) }}
+                                </span>
+                                <span class="text-sm text-gray-500">{{ $article->formatted_date }}</span>
+                            </div>
+                            
+                            <h2 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 hover:text-indigo-600 transition-colors">
+                                <a href="{{ route('news.show', $article->slug) }}">{{ $article->title }}</a>
+                            </h2>
+                            
+                            <p class="text-gray-600 mb-4 line-clamp-3">{{ $article->excerpt }}</p>
+                            
+                            <div class="flex items-center justify-between">
+                                <a href="{{ route('news.show', $article->slug) }}" class="
+                                    @if($article->category == 'services') text-blue-600 hover:text-blue-800
+                                    @elseif($article->category == 'partenariats') text-green-600 hover:text-green-800
+                                    @elseif($article->category == 'innovations') text-purple-600 hover:text-purple-800
+                                    @elseif($article->category == 'evenements') text-orange-600 hover:text-orange-800
+                                    @else text-indigo-600 hover:text-indigo-800
+                                    @endif
+                                    font-semibold transition-colors group inline-flex items-center">
+                                    Lire la suite
+                                    <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                    </svg>
+                                </a>
+                                <div class="flex items-center gap-4 text-sm text-gray-500">
+                                    <span>{{ $article->read_time }}</span>
+                                    <div class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                        </svg>
+                                        {{ $article->views_count }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                @endforeach
+            </div>
+            
+            <!-- Pagination -->
+            @if($news->hasPages())
+                <div class="mt-12 flex justify-center">
+                    {{ $news->links() }}
                 </div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                        <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full font-semibold">SABOU-CLEAN</span>
-                        <span>15 Nov 2024</span>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Nouveau contrat d'entretien majeur</h2>
-                    <p class="text-gray-600 mb-4">SABOU-CLEAN décroche un contrat de nettoyage premium pour un complexe de bureaux de 5000m² abritant plusieurs entreprises internationales.</p>
-                    <a href="#" class="text-blue-600 font-semibold hover:underline">Lire plus →</a>
-                </div>
-            </article>
-
-            <!-- Article 2 -->
-            <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-                <div class="h-64 bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center p-6">
-                    <img src="/images/news/event-success.svg" alt="Succès événementiel" class="w-full h-full object-contain">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                        <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full font-semibold">SABOU-EVENT</span>
-                        <span>10 Nov 2024</span>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Gala d'exception organisé</h2>
-                    <p class="text-gray-600 mb-4">SABOU-EVENT réalise la décoration et l'organisation d'un gala diplomatique de 500 personnes avec un succès unanimement salué.</p>
-                    <a href="#" class="text-purple-600 font-semibold hover:underline">Lire plus →</a>
-                </div>
-            </article>
-
-            <!-- Article 3 -->
-            <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-                <div class="h-64 bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center p-6">
-                    <img src="/images/news/agro-development.svg" alt="Développement agro" class="w-full h-full object-contain">
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                        <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full font-semibold">SABOU-AGRO</span>
-                        <span>05 Nov 2024</span>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Nouveau projet agro-écologique</h2>
-                    <p class="text-gray-600 mb-4">SABOU-AGRO lance un projet de culture biologique sur 10 hectares dans la région avec des techniques innovantes et durables.</p>
-                    <a href="#" class="text-green-600 font-semibold hover:underline">Lire plus →</a>
-                </div>
-            </article>
-
-            <!-- Article 4 -->
-            <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-                <div class="h-64 bg-gradient-to-br from-orange-100 to-orange-200"></div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                        <span class="bg-orange-100 text-orange-600 px-3 py-1 rounded-full font-semibold">SABOU-FOOD</span>
-                        <span>28 Oct 2024</span>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Certification qualité obtenue</h2>
-                    <p class="text-gray-600 mb-4">SABOU-FOOD obtient la certification HACCP pour ses cuisines professionnelles, renforçant son engagement qualité.</p>
-                    <a href="#" class="text-orange-600 font-semibold hover:underline">Lire plus →</a>
-                </div>
-            </article>
-
-            <!-- Article 5 -->
-            <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-                <div class="h-64 bg-gradient-to-br from-yellow-100 to-yellow-200"></div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                        <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full font-semibold">SABOU-ACADEMY</span>
-                        <span>20 Oct 2024</span>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Nouvelle promotion diplômée</h2>
-                    <p class="text-gray-600 mb-4">30 apprenants reçoivent leur diplôme en hôtellerie-restauration avec un taux d'insertion professionnelle de 90%.</p>
-                    <a href="#" class="text-yellow-600 font-semibold hover:underline">Lire plus →</a>
-                </div>
-            </article>
-
-            <!-- Article 6 -->
-            <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-                <div class="h-64 bg-gradient-to-br from-gray-100 to-gray-200"></div>
-                <div class="p-6">
-                    <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                        <span class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full font-semibold">Sabou-Gnouma</span>
-                        <span>15 Oct 2024</span>
-                    </div>
-                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Partenariat stratégique signé</h2>
-                    <p class="text-gray-600 mb-4">Sabou-Gnouma SARL signe un partenariat avec une grande institution pour des services multiservices intégrés.</p>
-                    <a href="#" class="text-gray-600 font-semibold hover:underline">Lire plus →</a>
-                </div>
-            </article>
-        </div>
+            @endif
+        @else
+            <div class="text-center py-16">
+                <svg class="w-24 h-24 text-gray-300 mx-auto mb-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                </svg>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Aucune actualité trouvée</h3>
+                <p class="text-gray-600 mb-8">
+                    @if(request('search'))
+                        Aucun résultat pour "{{ request('search') }}"
+                    @elseif(request('category'))
+                        Aucune actualité dans la catégorie "{{ request('category') }}"
+                    @else
+                        Les actualités seront bientôt disponibles
+                    @endif
+                </p>
+                <a href="{{ route('contact') }}" class="btn-premium bg-indigo-600 text-white inline-block">
+                    Nous contacter pour plus d'informations
+                </a>
+            </div>
+        @endif
     </div>
 </section>
 
