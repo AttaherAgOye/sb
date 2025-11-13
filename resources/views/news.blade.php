@@ -5,19 +5,68 @@
 @section('content')
 <div class="h-20"></div>
 
-<!-- Hero -->
-<section class="relative h-96 bg-gradient-to-r from-gray-900 to-gray-700 text-white">
-    <div class="max-w-7xl mx-auto px-4 h-full flex items-center">
-        <div class="max-w-3xl">
-            <h1 class="text-5xl md:text-6xl font-bold mb-6">Actualités</h1>
-            <p class="text-2xl font-light">Suivez nos dernières réalisations et actualités</p>
+<!-- Hero Premium -->
+<section class="relative h-[500px] md:h-[600px] overflow-hidden hero-section" style="background-image: url('/images/gallery/IMG_1836.JPG'); background-size: cover; background-position: center;">
+    <div class="hero-overlay"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-indigo-900/80 to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center relative z-10">
+        <div class="hero-content max-w-4xl">
+            <div class="inline-block mb-4 px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/30 zoom-in">
+                <span class="text-sm font-bold text-white tracking-wide flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 0a2 2 0 00-2-2H9m12 0a2 2 0 00-2-2H9m12 0V9a2 2 0 00-2-2H9"/>
+                    </svg>
+                    ACTUALITÉS & RÉALISATIONS
+                </span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 text-white fade-in leading-tight">
+                Actualités & <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-purple-300">Réalisations</span>
+            </h1>
+            <p class="text-2xl md:text-3xl font-light mb-6 text-indigo-100 fade-in-delay">Suivez nos dernières réalisations et actualités</p>
+            <p class="text-lg text-indigo-200 mb-8 fade-in-delay-2">Découvrez nos succès et innovations au quotidien</p>
+            
+            <div class="flex flex-wrap gap-4 mb-8 fade-in-delay-3">
+                <div class="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                    <svg class="w-5 h-5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    <span class="text-white font-medium">Innovation Continue</span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                    <svg class="w-5 h-5 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                    </svg>
+                    <span class="text-white font-medium">Succès Reconnus</span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                    <svg class="w-5 h-5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span class="text-white font-medium">Actualités Régulières</span>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Articles -->
-<section class="premium-section bg-white">
-    <div class="max-w-7xl mx-auto px-4">
+<section class="premium-section bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-indigo-50 via-purple-50 to-transparent rounded-full blur-3xl opacity-20"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 relative z-10">
+        <div class="text-center mb-16 fade-in-section">
+            <div class="inline-block mb-4 px-6 py-2 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-full border border-indigo-200">
+                <span class="text-sm font-bold text-gray-700 tracking-wide flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 0a2 2 0 00-2-2H9m12 0a2 2 0 00-2-2H9m12 0V9a2 2 0 00-2-2H9"/>
+                    </svg>
+                    DERNIÈRES ACTUALITÉS
+                </span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Nos Dernières <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Réalisations</span></h2>
+            <p class="text-xl text-gray-600">Découvrez nos succès récents et nos innovations</p>
+        </div>
+        
         <div class="grid md:grid-cols-3 gap-8">
             <!-- Article 1 -->
             <article class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
@@ -120,4 +169,30 @@
         <a href="{{ route('contact') }}" class="btn-premium bg-gray-900 text-white inline-block">Nous Contacter</a>
     </div>
 </section>
+<script>
+// Intersection Observer pour animations au scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+// Observer les sections avec fade-in
+document.querySelectorAll('.fade-in-section').forEach(el => {
+    observer.observe(el);
+});
+
+// Observer les articles
+document.querySelectorAll('article').forEach((el, index) => {
+    el.style.transitionDelay = `${index * 0.15}s`;
+    observer.observe(el);
+});
+</script>
 @endsection
