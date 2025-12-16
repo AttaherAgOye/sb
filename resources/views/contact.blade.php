@@ -197,7 +197,7 @@
                     </div>
                     <div class="aspect-video rounded-lg overflow-hidden bg-gray-100 mb-4">
                         <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3847.123456789!2d-8.003981590270996!3d12.650657653808594!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDM5JzAyLjQiTiA4wrAwMCcxNC4zIlc!5e0!3m2!1sen!2sbf!4v1699999999999!5m2!1sen!2sbf" 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d-8.003972!3d12.650667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDM5JzAyLjQiTiA4wrAwMCcxNC4zIlc!5e0!3m2!1sfr!2sml!4v1702759200000!5m2!1sfr!2sml" 
                             width="100%" 
                             height="100%" 
                             style="border:0;" 
@@ -208,10 +208,10 @@
                     </div>
                     <p class="text-gray-600 text-center">
                         <strong>Bamako, Mali</strong><br>
-                        Coordonnées: 12.650658, -8.003982
+                        Coordonnées: 12°39'02.4"N 8°00'14.3"W
                     </p>
                     <div class="mt-4 text-center">
-                        <a href="https://www.google.com/maps?q=12.650657653808594,-8.003981590270996&z=17&hl=en" 
+                        <a href="https://www.google.com/maps?q=12.650667,-8.003972&z=17&hl=fr" 
                            target="_blank" 
                            class="inline-flex items-center gap-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
