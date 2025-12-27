@@ -9,10 +9,13 @@
                         <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg md:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div class="ml-2 md:ml-4">
-                        <span class="text-base md:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">SABOUGNOUMA</span>
-                        <div class="flex items-center">
-                            <span class="text-xs md:text-sm text-gray-600 font-medium">SARL</span>
-                            <div class="hidden md:block ml-2 px-2 py-0.5 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full">
+                        <div class="flex items-baseline gap-1 md:block">
+                            <span class="text-base md:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">SABOUGNOUMA</span>
+                            <span class="text-xs md:hidden text-gray-600 font-medium">SARL</span>
+                        </div>
+                        <div class="hidden md:flex items-center">
+                            <span class="text-sm text-gray-600 font-medium">SARL</span>
+                            <div class="ml-2 px-2 py-0.5 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full">
                                 <span class="text-xs font-semibold text-indigo-700">Excellence</span>
                             </div>
                         </div>
