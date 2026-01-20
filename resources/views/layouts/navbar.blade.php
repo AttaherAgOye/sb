@@ -5,7 +5,7 @@
             <div class="flex-shrink-0">
                 <a href="{{ route('home') }}" class="flex items-center group transition-all duration-300 hover:scale-105">
                     <div class="relative">
-                        <img src="{{ asset('images/icons/favicon-16x16.png') }}" alt="SABOUGNOUMA Logo" class="w-9 h-9 md:w-12 md:h-12 rounded-lg md:rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300">
+                        <img src="{{ asset('logo.jpeg') }}" alt="SABOUGNOUMA Logo" class="w-9 h-9 md:w-12 md:h-12 rounded-lg md:rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 object-cover">
                         <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg md:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div class="ml-2 md:ml-4">
