@@ -4,8 +4,8 @@
             <!-- Logo -->
             <div class="flex-shrink-0">
                 <a href="{{ route('home') }}" class="flex items-center group transition-all duration-300 hover:scale-105">
-                    <div class="relative">
-                        <img src="{{ asset('logo.jpeg') }}" alt="SABOUGNOUMA Logo" class="w-14 h-14 md:w-20 md:h-20 rounded-md shadow-lg group-hover:shadow-xl transition-all duration-300 object-contain">
+                    <div class="relative w-14 h-14 md:w-16 md:h-16 rounded-md shadow-lg overflow-hidden">
+                        <img src="{{ asset('logo.jpeg') }}" alt="SABOUGNOUMA Logo" class="w-full h-full object-cover scale-150 group-hover:scale-[1.6] transition-all duration-300">
                         <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
                     <div class="ml-2 md:ml-4">
