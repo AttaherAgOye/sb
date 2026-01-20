@@ -5,8 +5,8 @@
             <div class="flex-shrink-0">
                 <a href="{{ route('home') }}" class="flex items-center group transition-all duration-300 hover:scale-105">
                     <div class="relative">
-                        <img src="{{ asset('logo.jpeg') }}" alt="SABOUGNOUMA Logo" class="w-9 h-9 md:w-12 md:h-12 rounded-lg md:rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg md:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <img src="{{ asset('logo.jpeg') }}" alt="SABOUGNOUMA Logo" class="w-12 h-12 md:w-16 md:h-16 rounded-lg md:rounded-xl shadow-lg group-hover:shadow-xl transition-all duration-300 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg md:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-12 h-12 md:w-16 md:h-16"></div>
                     </div>
                     <div class="ml-2 md:ml-4">
                         <div class="flex items-baseline gap-1 md:block">
