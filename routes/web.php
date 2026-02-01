@@ -4,9 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 
 // Page d'accueil
 Route::get('/', [PageController::class, 'home'])->name('home');
+
+// Routes d'authentification
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Page Notre Identité
 Route::get('/notre-identite', [PageController::class, 'identity'])->name('identity');
@@ -29,8 +35,8 @@ Route::get('/actualite/{news:slug}', [NewsController::class, 'show'])->name('new
 // Page Contact
 Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
-// Routes d'administration (avec protection middleware si nécessaire)
-Route::prefix('admin')->name('admin.')->group(function () {
+// Routes d'administration (protégées par authentification)
+Route::prefix('admin')->name('admin.')->middleware('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     
     // Gestion des actualités

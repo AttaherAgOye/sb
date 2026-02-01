@@ -32,6 +32,13 @@
                         <i class="fas fa-external-link-alt mr-3"></i>
                         Voir le site
                     </a>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="w-full flex items-center px-6 py-3 text-gray-300 hover:bg-red-600 hover:text-white transition-colors">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            Déconnexion
+                        </button>
+                    </form>
                 </div>
             </nav>
         </div>
@@ -45,6 +52,10 @@
                         <h2 class="text-2xl font-semibold text-gray-800">@yield('header', 'Administration')</h2>
                         <div class="flex items-center space-x-4">
                             <span class="text-gray-600">{{ now()->format('d/m/Y H:i') }}</span>
+                            <div class="flex items-center gap-2 px-3 py-1 bg-indigo-100 rounded-full">
+                                <i class="fas fa-user text-indigo-600"></i>
+                                <span class="text-indigo-700 font-medium">{{ Auth::user()->name }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
