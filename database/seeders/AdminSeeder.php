@@ -17,9 +17,10 @@ class AdminSeeder extends Seeder
         $admin = User::where('email', 'admin@sabougnouma.com')->first();
 
         if ($admin) {
-            // Mettre à jour si existe
+            // Mettre à jour si existe (y compris le mot de passe)
             $admin->update([
                 'name' => 'Administrateur',
+                'password' => Hash::make('SabouAdmin2026!'),
                 'is_admin' => true,
             ]);
             $this->command->info('Administrateur existant mis à jour.');
@@ -39,7 +40,7 @@ class AdminSeeder extends Seeder
         $this->command->info('║     IDENTIFIANTS DE CONNEXION ADMIN              ║');
         $this->command->info('╠══════════════════════════════════════════════════╣');
         $this->command->info('║  Email:    admin@sabougnouma.com                 ║');
-        $this->command->info('║  Mot de passe: SabouAdmin2024!                   ║');
+        $this->command->info('║  Mot de passe: SabouAdmin2026!                   ║');
         $this->command->info('╠══════════════════════════════════════════════════╣');
         $this->command->info('║  ⚠️  Changez ce mot de passe après connexion!    ║');
         $this->command->info('╚══════════════════════════════════════════════════╝');
