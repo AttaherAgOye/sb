@@ -30,29 +30,29 @@
             </div>
         </div>
     </div>
-    
-    <!-- Actualités À la Une -->
+
+    <!-- Offres actives -->
     <div class="bg-white rounded-lg shadow p-6">
         <div class="flex items-center">
-            <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
-                <i class="fas fa-star text-2xl"></i>
+            <div class="p-3 rounded-full bg-indigo-100 text-indigo-600">
+                <i class="fas fa-briefcase text-2xl"></i>
             </div>
             <div class="ml-4">
-                <h3 class="text-lg font-semibold text-gray-700">À la Une</h3>
-                <p class="text-3xl font-bold text-yellow-600">{{ $stats['featured_news'] }}</p>
+                <h3 class="text-lg font-semibold text-gray-700">Offres actives</h3>
+                <p class="text-3xl font-bold text-indigo-600">{{ $stats['active_job_offers'] }}</p>
             </div>
         </div>
     </div>
-    
-    <!-- Brouillons -->
+
+    <!-- Nouvelles candidatures -->
     <div class="bg-white rounded-lg shadow p-6">
         <div class="flex items-center">
-            <div class="p-3 rounded-full bg-gray-100 text-gray-600">
-                <i class="fas fa-edit text-2xl"></i>
+            <div class="p-3 rounded-full bg-orange-100 text-orange-600">
+                <i class="fas fa-file-alt text-2xl"></i>
             </div>
             <div class="ml-4">
-                <h3 class="text-lg font-semibold text-gray-700">Brouillons</h3>
-                <p class="text-3xl font-bold text-gray-600">{{ $stats['draft_news'] }}</p>
+                <h3 class="text-lg font-semibold text-gray-700">Nouvelles candid.</h3>
+                <p class="text-3xl font-bold text-orange-600">{{ $stats['new_applications'] }}</p>
             </div>
         </div>
     </div>
@@ -95,9 +95,6 @@
                                         Brouillon
                                     </span>
                                 @endif
-                                @if($news->is_featured)
-                                    <i class="fas fa-star text-yellow-500" title="À la une"></i>
-                                @endif
                             </div>
                         </div>
                     @endforeach
@@ -107,52 +104,57 @@
                     <i class="fas fa-newspaper text-4xl text-gray-300 mb-4"></i>
                     <p class="text-gray-500">Aucune actualité pour le moment</p>
                     <a href="{{ route('admin.news.create') }}" class="mt-4 inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-                        <i class="fas fa-plus mr-2"></i>
-                        Créer une actualité
+                        <i class="fas fa-plus mr-2"></i> Créer une actualité
                     </a>
                 </div>
             @endif
         </div>
     </div>
-    
-    <!-- Actions Rapides -->
+
+    <!-- Candidatures récentes -->
     <div class="bg-white rounded-lg shadow">
         <div class="p-6 border-b border-gray-200">
-            <h3 class="text-lg font-semibold text-gray-700">Actions Rapides</h3>
-        </div>
-        <div class="p-6">
-            <div class="space-y-4">
-                <a href="{{ route('admin.news.create') }}" class="flex items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                    <div class="p-2 bg-blue-600 rounded-lg text-white">
-                        <i class="fas fa-plus"></i>
-                    </div>
-                    <div class="ml-4">
-                        <h4 class="font-medium text-gray-900">Nouvelle Actualité</h4>
-                        <p class="text-sm text-gray-600">Créer une nouvelle actualité</p>
-                    </div>
-                </a>
-                
-                <a href="{{ route('admin.news.index') }}" class="flex items-center p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors">
-                    <div class="p-2 bg-green-600 rounded-lg text-white">
-                        <i class="fas fa-list"></i>
-                    </div>
-                    <div class="ml-4">
-                        <h4 class="font-medium text-gray-900">Gérer les Actualités</h4>
-                        <p class="text-sm text-gray-600">Voir et modifier les actualités</p>
-                    </div>
-                </a>
-                
-                <a href="{{ route('news') }}" target="_blank" class="flex items-center p-4 bg-purple-50 rounded-lg hover:bg-purple-100 transition-colors">
-                    <div class="p-2 bg-purple-600 rounded-lg text-white">
-                        <i class="fas fa-external-link-alt"></i>
-                    </div>
-                    <div class="ml-4">
-                        <h4 class="font-medium text-gray-900">Voir le Site</h4>
-                        <p class="text-sm text-gray-600">Consulter la page actualités</p>
-                    </div>
+            <div class="flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-gray-700">Dernières Candidatures</h3>
+                <a href="{{ route('admin.applications.index') }}" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
+                    Voir tout
                 </a>
             </div>
+        </div>
+        <div class="p-6">
+            @if($recent_applications->count() > 0)
+                <div class="space-y-4">
+                    @foreach($recent_applications as $app)
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-indigo-700 font-bold text-sm">{{ strtoupper(substr($app->first_name, 0, 1) . substr($app->last_name, 0, 1)) }}</span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h4 class="text-sm font-medium text-gray-900 truncate">{{ $app->full_name }}</h4>
+                                <p class="text-xs text-gray-500 truncate">{{ $app->jobOffer->title }}</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium {{ $app->status_badge_class }}">
+                                    {{ $app->status_label }}
+                                </span>
+                                <a href="{{ route('admin.applications.show', $app) }}" class="text-indigo-600 hover:text-indigo-900">
+                                    <i class="fas fa-eye text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="text-center py-8">
+                    <i class="fas fa-inbox text-4xl text-gray-300 mb-4"></i>
+                    <p class="text-gray-500">Aucune candidature pour le moment</p>
+                    <a href="{{ route('admin.job-offers.create') }}" class="mt-4 inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                        <i class="fas fa-plus mr-2"></i> Créer une offre
+                    </a>
+                </div>
+            @endif
         </div>
     </div>
 </div>
 @endsection
+

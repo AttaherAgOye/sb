@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\JobOffer;
+use App\Models\Application;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -12,15 +14,19 @@ class AdminController extends Controller
     public function dashboard()
     {
         $stats = [
-            'total_news' => News::count(),
-            'published_news' => News::published()->count(),
-            'featured_news' => News::featured()->count(),
-            'draft_news' => News::where('is_published', false)->count(),
+            'total_news'          => News::count(),
+            'published_news'      => News::published()->count(),
+            'featured_news'       => News::featured()->count(),
+            'draft_news'          => News::where('is_published', false)->count(),
+            'active_job_offers'   => JobOffer::where('is_active', true)->count(),
+            'total_applications'  => Application::count(),
+            'new_applications'    => Application::where('status', 'nouveau')->count(),
         ];
-        
-        $recent_news = News::orderBy('created_at', 'desc')->limit(5)->get();
-        
-        return view('admin.dashboard', compact('stats', 'recent_news'));
+
+        $recent_news        = News::orderBy('created_at', 'desc')->limit(5)->get();
+        $recent_applications = Application::with('jobOffer')->orderBy('created_at', 'desc')->limit(5)->get();
+
+        return view('admin.dashboard', compact('stats', 'recent_news', 'recent_applications'));
     }
 
     public function newsIndex()

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\JobOffer;
 
 class PageController extends Controller
 {
@@ -89,4 +90,17 @@ class PageController extends Controller
     {
         return view('news');
     }
+
+    public function careers()
+    {
+        $jobOffers = JobOffer::active()->orderBy('created_at', 'desc')->get();
+        return view('careers', compact('jobOffers'));
+    }
+
+    public function careersShow(JobOffer $jobOffer)
+    {
+        abort_if(!$jobOffer->is_active, 404);
+        return view('careers.show', compact('jobOffer'));
+    }
 }
+

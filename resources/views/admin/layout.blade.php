@@ -26,6 +26,16 @@
                     <i class="fas fa-newspaper mr-3"></i>
                     Actualités
                 </a>
+
+                <a href="{{ route('admin.job-offers.index') }}" class="flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 hover:text-white {{ request()->routeIs('admin.job-offers.*') ? 'bg-gray-700 text-white' : '' }}">
+                    <i class="fas fa-briefcase mr-3"></i>
+                    Offres d'emploi
+                </a>
+
+                <a href="{{ route('admin.applications.index') }}" class="flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 hover:text-white {{ request()->routeIs('admin.applications.*') ? 'bg-gray-700 text-white' : '' }}">
+                    <i class="fas fa-file-alt mr-3"></i>
+                    Candidatures
+                </a>
                 
                 <div class="border-t border-gray-700 mt-6 pt-6">
                     <a href="{{ route('home') }}" class="flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 hover:text-white">
