@@ -33,7 +33,7 @@
                 {{-- Lieu --}}
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Lieu <span class="text-red-500">*</span></label>
-                    <input type="text" name="location" value="{{ old('location', 'Conakry, Guinée') }}"
+                    <input type="text" name="location" value="{{ old('location', 'Bamako, Mali') }}"
                            class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
                            required>
                 </div>

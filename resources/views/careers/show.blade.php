@@ -155,7 +155,7 @@
                             <div>
                                 <label class="block text-sm font-semibold text-gray-700 mb-1.5">Téléphone</label>
                                 <input type="tel" name="phone" value="{{ old('phone') }}" 
-                                       class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 block p-3 transition-all placeholder-gray-400" placeholder="+224 XX XX XX XX">
+                                       class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 block p-3 transition-all placeholder-gray-400" placeholder="+223 XX XX XX XX">
                             </div>
 
                             {{-- File Uploads (CV & Lettre) --}}

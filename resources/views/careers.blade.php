@@ -31,7 +31,7 @@
         
         <div class="flex flex-wrap gap-4 justify-center animate-fade-in-up animation-delay-200">
             <span class="bg-white/10 border border-white/20 text-indigo-50 px-5 py-2.5 rounded-full text-sm font-medium backdrop-blur-sm shadow-xl flex items-center gap-2">
-                <i class="fas fa-map-marker-alt text-indigo-300"></i> Siège : Conakry, Guinée
+                <i class="fas fa-map-marker-alt text-indigo-300"></i> Siège : Bamako, Mali
             </span>
             <span class="bg-white/10 border border-white/20 text-indigo-50 px-5 py-2.5 rounded-full text-sm font-medium backdrop-blur-sm shadow-xl flex items-center gap-2">
                 <i class="fas fa-star text-yellow-300"></i> {{ $jobOffers->count() }} opportunité(s)

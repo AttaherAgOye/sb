@@ -28,6 +28,7 @@
                     <li><a href="{{ route('identity') }}" class="text-gray-400 hover:text-white transition">Notre Identité</a></li>
                     <li><a href="{{ route('partners') }}" class="text-gray-400 hover:text-white transition">Partenaires</a></li>
                     <li><a href="{{ route('news') }}" class="text-gray-400 hover:text-white transition">Actualités</a></li>
+                    <li><a href="{{ route('careers') }}" class="text-gray-400 hover:text-white transition">Carrières</a></li>
                     <li><a href="{{ route('contact') }}" class="text-gray-400 hover:text-white transition">Contact</a></li>
                 </ul>
             </div>
@@ -40,7 +41,7 @@
                         <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
-                        contact@sabougnouma.com
+                        contact@sabougnouma.ml
                     </li>
                     <li class="flex items-center gap-2">
                         <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
