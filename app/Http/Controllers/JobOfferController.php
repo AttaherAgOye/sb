@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JobOffer;
+use Illuminate\Support\Facades\Storage;
 
 class JobOfferController extends Controller
 {
@@ -23,15 +24,29 @@ class JobOfferController extends Controller
         $validated = $request->validate([
             'title'        => 'required|string|max:255',
             'department'   => 'nullable|string|max:255',
-            'location'     => 'required|string|max:255',
-            'type'         => 'required|in:CDI,CDD,Stage,Freelance',
-            'description'  => 'required|string',
+            'location'     => 'nullable|string|max:255',
+            'type'         => 'nullable|in:CDI,CDD,Stage,Freelance',
+            'description'  => 'nullable|string',
             'requirements' => 'nullable|string',
             'deadline'     => 'nullable|date|after:today',
             'is_active'    => 'boolean',
+            'documents'    => 'nullable|array',
+            'documents.*'  => 'file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx|max:10240',
         ]);
 
         $validated['is_active'] = $request->has('is_active');
+
+        $documents = [];
+        if ($request->hasFile('documents')) {
+            foreach ($request->file('documents') as $file) {
+                $path = $file->store('job-offer-documents', 'public');
+                $documents[] = [
+                    'name' => $file->getClientOriginalName(),
+                    'path' => $path,
+                ];
+            }
+        }
+        $validated['documents'] = $documents ?: null;
 
         JobOffer::create($validated);
 
@@ -55,16 +70,47 @@ class JobOfferController extends Controller
         $validated = $request->validate([
             'title'        => 'required|string|max:255',
             'department'   => 'nullable|string|max:255',
-            'location'     => 'required|string|max:255',
-            'type'         => 'required|in:CDI,CDD,Stage,Freelance',
-            'description'  => 'required|string',
+            'location'     => 'nullable|string|max:255',
+            'type'         => 'nullable|in:CDI,CDD,Stage,Freelance',
+            'description'  => 'nullable|string',
             'requirements' => 'nullable|string',
             'deadline'     => 'nullable|date',
             'is_active'    => 'boolean',
+            'new_documents'       => 'nullable|array',
+            'new_documents.*'     => 'file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx|max:10240',
+            'remove_documents'    => 'nullable|array',
+            'remove_documents.*'  => 'string',
         ]);
 
         $validated['is_active'] = $request->has('is_active');
 
+        // Handle document removals
+        $existingDocuments = $jobOffer->documents ?? [];
+        if ($request->has('remove_documents')) {
+            $toRemove = $request->input('remove_documents', []);
+            foreach ($existingDocuments as $key => $doc) {
+                if (in_array($doc['path'], $toRemove)) {
+                    Storage::disk('public')->delete($doc['path']);
+                    unset($existingDocuments[$key]);
+                }
+            }
+            $existingDocuments = array_values($existingDocuments);
+        }
+
+        // Handle new document uploads
+        if ($request->hasFile('new_documents')) {
+            foreach ($request->file('new_documents') as $file) {
+                $path = $file->store('job-offer-documents', 'public');
+                $existingDocuments[] = [
+                    'name' => $file->getClientOriginalName(),
+                    'path' => $path,
+                ];
+            }
+        }
+
+        $validated['documents'] = $existingDocuments ?: null;
+
+        unset($validated['new_documents'], $validated['remove_documents']);
         $jobOffer->update($validated);
 
         return redirect()->route('admin.job-offers.index')
@@ -73,6 +119,13 @@ class JobOfferController extends Controller
 
     public function destroy(JobOffer $jobOffer)
     {
+        // Delete associated documents from storage
+        if ($jobOffer->documents) {
+            foreach ($jobOffer->documents as $doc) {
+                Storage::disk('public')->delete($doc['path']);
+            }
+        }
+
         $jobOffer->delete();
 
         return redirect()->route('admin.job-offers.index')

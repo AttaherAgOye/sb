@@ -24,6 +24,7 @@
         </h1>
         
         <div class="flex flex-wrap gap-4 items-center animate-fade-in-up animation-delay-100">
+            @if($jobOffer->type)
             @php
                 $typeClasses = match($jobOffer->type) {
                     'CDI' => 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
@@ -36,16 +37,19 @@
             <span class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-semibold border backdrop-blur-sm {{ $typeClasses }}">
                 {{ $jobOffer->type }}
             </span>
+            @endif
             
             @if($jobOffer->department)
                 <span class="flex items-center text-indigo-100/80 text-sm">
                     <i class="fas fa-sitemap mr-2 opacity-70"></i> {{ $jobOffer->department }}
                 </span>
             @endif
-            
+
+            @if($jobOffer->location)
             <span class="flex items-center text-indigo-100/80 text-sm">
                 <i class="fas fa-map-marker-alt mr-2 opacity-70"></i> {{ $jobOffer->location }}
             </span>
+            @endif
             
             @if($jobOffer->deadline)
                 <span class="flex items-center text-indigo-100/80 text-sm {{ $jobOffer->is_expired ? 'text-red-300' : '' }}">
@@ -79,13 +83,15 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-10 relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-1.5 h-20 bg-indigo-600"></div>
                     
+                    @if($jobOffer->description)
                     <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
                         Description du poste
                     </h2>
-                    
+
                     <div class="prose prose-indigo max-w-none text-gray-600 leading-relaxed mb-10 text-base">
                         {!! nl2br(e($jobOffer->description)) !!}
                     </div>
+                    @endif
 
                     @if($jobOffer->requirements)
                         <h2 class="text-2xl font-bold text-gray-900 mb-6 border-t border-gray-100 pt-10 flex items-center gap-3">
@@ -94,6 +100,33 @@
                         <div class="prose prose-indigo max-w-none text-gray-600 leading-relaxed text-base">
                             {!! nl2br(e($jobOffer->requirements)) !!}
                         </div>
+                    @endif
+
+                    @if($jobOffer->documents && count($jobOffer->documents) > 0)
+                        <div class="{{ $jobOffer->description || $jobOffer->requirements ? 'border-t border-gray-100 pt-10 mt-10' : '' }}">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                                <i class="fas fa-paperclip text-indigo-400 text-xl"></i> Documents de l'offre
+                            </h2>
+                            <p class="text-sm text-gray-500 mb-4">Consultez les documents ci-dessous pour plus de détails sur le poste.</p>
+                            <div class="space-y-3">
+                                @foreach($jobOffer->documents as $doc)
+                                <a href="{{ Storage::url($doc['path']) }}" target="_blank"
+                                   class="flex items-center gap-4 p-4 bg-indigo-50 hover:bg-indigo-100 border border-indigo-100 rounded-xl transition-all group">
+                                    <div class="w-10 h-10 bg-indigo-100 group-hover:bg-indigo-200 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors">
+                                        <i class="fas fa-file-alt text-indigo-500"></i>
+                                    </div>
+                                    <span class="flex-1 text-sm font-semibold text-indigo-800 truncate">{{ $doc['name'] }}</span>
+                                    <span class="flex items-center gap-1.5 text-xs font-medium text-indigo-600 flex-shrink-0">
+                                        <i class="fas fa-download"></i> Télécharger
+                                    </span>
+                                </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+
+                    @if(!$jobOffer->description && !$jobOffer->requirements && (!$jobOffer->documents || count($jobOffer->documents) === 0))
+                        <p class="text-gray-500 italic text-sm">Aucune description disponible pour cette offre. Contactez-nous pour plus d'informations.</p>
                     @endif
                 </div>
                 

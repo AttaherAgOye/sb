@@ -18,26 +18,25 @@ class JobOffer extends Model
         'requirements',
         'deadline',
         'is_active',
+        'documents',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
         'deadline'  => 'date',
+        'documents' => 'array',
     ];
 
-    // Scopes
     public function scopeActive($query)
     {
         return $query->where('is_active', true);
     }
 
-    // Relations
     public function applications()
     {
         return $this->hasMany(Application::class);
     }
 
-    // Accessors
     public function getTypeLabelAttribute(): string
     {
         return match ($this->type) {
@@ -45,7 +44,7 @@ class JobOffer extends Model
             'CDD'       => 'CDD',
             'Stage'     => 'Stage',
             'Freelance' => 'Freelance',
-            default     => $this->type,
+            default     => $this->type ?? '',
         };
     }
 

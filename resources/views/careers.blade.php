@@ -71,11 +71,14 @@
                                     @if($offer->department)
                                         <span class="flex items-center gap-1.5"><i class="fas fa-sitemap text-indigo-400"></i> {{ $offer->department }}</span>
                                     @endif
-                                    <span class="flex items-center gap-1.5"><i class="fas fa-map-marker-alt text-indigo-400"></i> {{ $offer->location }}</span>
+                                    @if($offer->location)
+                                        <span class="flex items-center gap-1.5"><i class="fas fa-map-marker-alt text-indigo-400"></i> {{ $offer->location }}</span>
+                                    @endif
                                 </div>
                             </div>
-                            
+
                             {{-- Type Badge --}}
+                            @if($offer->type)
                             @php
                                 $typeClasses = match($offer->type) {
                                     'CDI' => 'bg-emerald-100 text-emerald-700 ring-emerald-600/20',
@@ -88,11 +91,20 @@
                             <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold {{ $typeClasses }} ring-1 ring-inset shadow-sm self-start whitespace-nowrap">
                                 {{ $offer->type }}
                             </span>
+                            @endif
                         </div>
 
+                        @if($offer->description)
                         <p class="text-gray-600 text-base leading-relaxed mb-6 line-clamp-2">
                             {{ Str::limit(strip_tags($offer->description), 160) }}
                         </p>
+                        @elseif($offer->documents && count($offer->documents) > 0)
+                        <p class="text-gray-500 text-sm italic mb-6">
+                            <i class="fas fa-paperclip mr-1"></i> {{ count($offer->documents) }} document(s) joint(s) — voir les détails
+                        </p>
+                        @else
+                        <p class="text-gray-400 text-sm italic mb-6">Consultez les détails de l'offre pour plus d'informations.</p>
+                        @endif
 
                         <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-gray-100">
                             <div>

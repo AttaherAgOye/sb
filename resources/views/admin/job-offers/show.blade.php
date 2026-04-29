@@ -50,6 +50,22 @@
                 <h3 class="font-semibold text-gray-800 mb-2">Profil recherché</h3>
                 <div class="text-gray-700 whitespace-pre-line">{{ $jobOffer->requirements }}</div>
             @endif
+
+            @if($jobOffer->documents && count($jobOffer->documents) > 0)
+                <h3 class="font-semibold text-gray-800 mt-6 mb-3 flex items-center gap-2">
+                    <i class="fas fa-paperclip text-indigo-500"></i> Documents joints
+                </h3>
+                <div class="space-y-2">
+                    @foreach($jobOffer->documents as $doc)
+                    <a href="{{ Storage::url($doc['path']) }}" target="_blank"
+                       class="flex items-center gap-3 p-3 bg-indigo-50 hover:bg-indigo-100 rounded-lg transition-colors group">
+                        <i class="fas fa-file-alt text-indigo-400 group-hover:text-indigo-600"></i>
+                        <span class="text-sm text-indigo-700 font-medium truncate">{{ $doc['name'] }}</span>
+                        <i class="fas fa-download text-indigo-400 ml-auto text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                    </a>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 
